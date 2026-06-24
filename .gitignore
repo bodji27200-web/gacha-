@@ -1,0 +1,13 @@
+# Cache et données générées par Godot
+.godot/
+.import/
+export.cfg
+
+# Sorties de build / export
+/build/
+/exports/
+*.tmp
+
+# Divers
+.DS_Store
+Thumbs.db

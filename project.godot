@@ -1,0 +1,45 @@
+; Engine configuration file.
+; Gacha RPG 2D au tour par tour — Phase 1 (prototype fondateur)
+
+config_version=5
+
+[application]
+
+config/name="Cendres & Cristaux"
+config/description="Prototype de RPG gacha 2D au tour par tour (Phase 1)."
+run/main_scene="res://scenes/Boot.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+boot_splash/show_image=false
+
+[autoload]
+
+RNG="*res://src/autoload/RNG.gd"
+DataRegistry="*res://src/autoload/DataRegistry.gd"
+GameState="*res://src/autoload/GameState.gd"
+SaveManager="*res://src/autoload/SaveManager.gd"
+AudioManager="*res://src/autoload/AudioManager.gd"
+SceneRouter="*res://src/autoload/SceneRouter.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=1
+environment/defaults/default_clear_color=Color(0.07, 0.06, 0.1, 1)
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
