@@ -265,13 +265,37 @@ func _resolve_pull(banner: SummonBannerDefinition, rarity: int, force_new: bool)
 ## Invocation simple. `free` = première invocation gratuite (héros nouveau garanti).
 func summon_single(free: bool = false) -> Dictionary:
 	var banner: SummonBannerDefinition = registry.get_default_banner()
-	var is_free := free and not first_summon_done
-	var rarity := _roll_rarity(banner)
-	var res := _resolve_pull(banner, rarity, is_free)
+	var res: Dictionary
+	if free and not first_summon_done:
+		res = _resolve_first_free(banner)
+	else:
+		var rarity := _roll_rarity(banner)
+		res = _resolve_pull(banner, rarity, false)
 	first_summon_done = true
 	collection_changed.emit()
 	currency_changed.emit()
 	return res
+
+## Première invocation : garantit un héros non possédé, toutes raretés confondues.
+func _resolve_first_free(banner: SummonBannerDefinition) -> Dictionary:
+	var ids: Array = []
+	var weights: Array = []
+	for rarity in banner.pool.keys():
+		for did in banner.pool[rarity]:
+			if not owns_def(did):
+				ids.append(did)
+				weights.append(banner.rates.get(rarity, 0.01))
+	if ids.is_empty():
+		return _resolve_pull(banner, _roll_rarity(banner), false)
+	var def_id := String(rng.weighted_pick(ids, weights))
+	var def: HeroDefinition = registry.get_hero(def_id)
+	if def.rarete == banner.pity_rarity:
+		pity_counter = 0
+	else:
+		pity_counter += 1
+	total_summons += 1
+	heroes.append(_create_instance(def_id))
+	return {"def_id": def_id, "rarity": def.rarete, "name": def.nom, "is_new": true, "fragments": 0}
 
 ## Invocation x10 avec garantie d'au moins un 4★+.
 func summon_multi() -> Array:
