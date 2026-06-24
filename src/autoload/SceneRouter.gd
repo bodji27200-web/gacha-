@@ -7,6 +7,7 @@ const TEAM := "res://scenes/TeamBuilder.tscn"
 const SUMMON := "res://scenes/Summon.tscn"
 const STAGES := "res://scenes/StageSelect.tscn"
 const BATTLE := "res://scenes/Battle.tscn"
+const BATTLE3D := "res://scenes/Battle3D.tscn"
 
 var _layer: CanvasLayer
 var _fade: ColorRect
@@ -41,4 +42,4 @@ func goto(path: String) -> void:
 
 func goto_battle(stage_id: String) -> void:
 	pending_stage_id = stage_id
-	goto(BATTLE)
+	goto(BATTLE3D)
