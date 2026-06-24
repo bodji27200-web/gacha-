@@ -4,7 +4,7 @@ extends HBoxContainer
 
 func setup(title_text: String, back_target: String = "") -> void:
 	add_theme_constant_override("separation", 16)
-	var back := Style.button("←  Retour")
+	var back := Style.button("<  Retour")
 	back.pressed.connect(func():
 		AudioManager.play_sfx("click")
 		if back_target != "":

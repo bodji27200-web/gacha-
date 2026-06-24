@@ -65,7 +65,7 @@ func _stage_card(st: StageDefinition, unlocked: bool) -> PanelContainer:
 	if st.has_boss:
 		titlerow.add_child(_tag("BOSS", Style.DANGER))
 	if cleared:
-		titlerow.add_child(_tag("✓ Terminé", Style.OK))
+		titlerow.add_child(_tag("Terminé", Style.OK))
 	info.add_child(titlerow)
 	info.add_child(Style.label(st.description, 14, Style.DIM))
 
@@ -91,7 +91,7 @@ func _stage_card(st: StageDefinition, unlocked: bool) -> PanelContainer:
 			SceneRouter.goto_battle(st.id))
 		right.add_child(fight)
 	else:
-		right.add_child(Style.label("🔒 Verrouillé", 16, Style.DIM))
+		right.add_child(Style.label("Verrouillé", 16, Style.DIM))
 		right.add_child(Style.label("Terminez le stage précédent", 12, Style.DIM))
 	h.add_child(right)
 	return panel

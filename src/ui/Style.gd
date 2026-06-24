@@ -37,6 +37,11 @@ static func theme() -> Theme:
 	if _theme != null:
 		return _theme
 	var th := Theme.new()
+	# Police DejaVu Sans (libre) : couvre le français + les symboles (★ ▲ ▼ …)
+	# que la police par défaut de Godot n'inclut pas.
+	var f: Font = load("res://assets/fonts/DejaVuSans.ttf")
+	if f != null:
+		th.default_font = f
 	th.default_font_size = 18
 
 	th.set_stylebox("normal", "Button", _sb(PANEL2, 8, ACCENT2.darkened(0.2), 1))

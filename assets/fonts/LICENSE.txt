@@ -1,0 +1,15 @@
+DejaVu Sans (DejaVuSans.ttf, DejaVuSans-Bold.ttf)
+=================================================
+
+Police libre utilisée pour l'interface (couvre le français et les symboles
+★ ▲ ▼ absents de la police par défaut de Godot).
+
+Les polices DejaVu sont basées sur Bitstream Vera Fonts et sur des ajouts
+relevant du domaine public. Licence permissive autorisant la redistribution,
+y compris dans des logiciels et des jeux.
+
+Détails et texte complet de la licence :
+https://dejavu-fonts.github.io/License.html
+
+Bitstream Vera Fonts Copyright © 2003 Bitstream, Inc.
+DejaVu changes are in public domain.

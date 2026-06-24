@@ -42,7 +42,7 @@ func _ready() -> void:
 	_center.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(_center)
 
-	_skip_btn = Style.button("Passer  ⏩")
+	_skip_btn = Style.button("Passer l'animation")
 	_skip_btn.theme = Style.theme()
 	_skip_btn.position = Vector2(40, 40)
 	_skip_btn.pressed.connect(_skip)

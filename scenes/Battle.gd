@@ -53,7 +53,7 @@ func _build_ui() -> void:
 	# Barre supérieure
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 10)
-	var abandon := Style.button("⚑ Abandonner")
+	var abandon := Style.button("Abandonner")
 	abandon.pressed.connect(_confirm_abandon)
 	top.add_child(abandon)
 	top.add_child(Style.title("%s — %s" % [stage.id, stage.nom], 22))
@@ -64,7 +64,7 @@ func _build_ui() -> void:
 		GameState.settings["combat_speed"] = 2 if int(GameState.settings.get("combat_speed", 1)) == 1 else 1
 		_refresh_speed(); SaveManager.autosave())
 	top.add_child(speed_btn)
-	var settings := Style.button("⚙")
+	var settings := Style.button("Options")
 	settings.pressed.connect(func(): add_child(SettingsPopup.new()))
 	top.add_child(settings)
 	root.add_child(top)
@@ -434,7 +434,7 @@ func _result_overlay(victory: bool, summary: Dictionary) -> CanvasLayer:
 		v.add_child(rr)
 		v.add_child(Style.label("+%d XP par héros" % int(summary.get("xp", 0)), 14, Style.DIM))
 		for lu in summary.get("level_ups", []):
-			v.add_child(Style.label("⬆ %s atteint le niveau %d !" % [lu.get("name", ""), lu.get("to", 0)], 14, Style.OK))
+			v.add_child(Style.label("%s atteint le niveau %d !" % [lu.get("name", ""), lu.get("to", 0)], 14, Style.OK))
 	else:
 		v.add_child(Style.label("Améliorez vos héros ou modifiez votre équipe, puis réessayez.", 14, Style.DIM))
 

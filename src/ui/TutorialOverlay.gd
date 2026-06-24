@@ -58,7 +58,7 @@ func _ready() -> void:
 	skip.pressed.connect(_finish)
 	row.add_child(skip)
 	row.add_child(Style.spacer())
-	_next = Style.button("Suivant  →", Vector2(150, 0))
+	_next = Style.button("Suivant", Vector2(150, 0))
 	_next.pressed.connect(_advance)
 	row.add_child(_next)
 	v.add_child(row)
@@ -68,7 +68,7 @@ func _ready() -> void:
 func _show_page() -> void:
 	_title.text = PAGES[_index][0]
 	_body.text = PAGES[_index][1]
-	_next.text = "Compris  ✓" if _index == PAGES.size() - 1 else "Suivant  →"
+	_next.text = "Compris" if _index == PAGES.size() - 1 else "Suivant"
 
 func _advance() -> void:
 	AudioManager.play_sfx("click")

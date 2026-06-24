@@ -73,9 +73,10 @@ func _nav_button(glyph: String, title: String, subtitle: String, scene: String) 
 	h.add_theme_constant_override("separation", 14)
 	h.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	b.add_child(h)
-	var g := Style.label(glyph, 32, Style.ACCENT)
-	g.custom_minimum_size.x = 40
-	g.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	var g := ColorRect.new()
+	g.color = Style.ACCENT
+	g.custom_minimum_size = Vector2(6, 46)
+	g.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	h.add_child(g)
 	var v := VBoxContainer.new()
 	v.size_flags_vertical = Control.SIZE_EXPAND_FILL

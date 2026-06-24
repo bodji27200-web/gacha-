@@ -11,3 +11,6 @@ export.cfg
 # Divers
 .DS_Store
 Thumbs.db
+
+# Captures et bac à sable local
+/scratchpad/

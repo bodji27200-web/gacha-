@@ -17,15 +17,9 @@ func _ready() -> void:
 	_cry = Label.new()
 	h.add_child(_make_pill("crystal", _cry))
 
-	var accbox := HBoxContainer.new()
-	accbox.add_theme_constant_override("separation", 6)
-	var dot := Label.new()
-	dot.text = "✦"
-	dot.add_theme_color_override("font_color", Style.ACCENT2.lightened(0.2))
 	_acc = Label.new()
-	accbox.add_child(dot)
-	accbox.add_child(_acc)
-	h.add_child(accbox)
+	_acc.add_theme_color_override("font_color", Style.ACCENT2.lightened(0.3))
+	h.add_child(_acc)
 
 	if not GameState.currency_changed.is_connected(refresh):
 		GameState.currency_changed.connect(refresh)
