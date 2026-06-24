@@ -522,6 +522,33 @@ func _resolve_timeout() -> void:
 # =====================================================================
 #  JOURNAL D'ÉVÉNEMENTS
 # =====================================================================
+## Prévision (approximative) des `count` prochains acteurs — pour la barre d'ordre.
+## N'altère pas l'état (ignore étourdissements et effets de jauge futurs).
+func forecast(count: int) -> Array:
+	var sim: Array = []
+	for c in living():
+		sim.append({"cid": c.cid, "gauge": c.gauge, "spd": c.speed()})
+	var order: Array = []
+	for _i in count:
+		if sim.is_empty():
+			break
+		var best_t := INF
+		for s in sim:
+			best_t = minf(best_t, (100.0 - s.gauge) / s.spd)
+		best_t = maxf(0.0, best_t)
+		for s in sim:
+			s.gauge += s.spd * best_t
+		var act: Dictionary = {}
+		for s in sim:
+			if s.gauge >= 100.0 - 0.0001:
+				if act.is_empty() or s.gauge > act.gauge:
+					act = s
+		if act.is_empty():
+			break
+		order.append(act.cid)
+		act.gauge -= 100.0
+	return order
+
 func _emit(ev: Dictionary) -> void:
 	_events.append(ev)
 
